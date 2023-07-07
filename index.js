@@ -27,7 +27,7 @@ app.post('/bookings', (req, res) => {
   // Check if the room is available for booking
   const room = rooms.find(r => r.id === roomId);
   if (!room) {
-    return res.status(404).json({ message: 'Room not found' });
+    return res.status(404).json({ message: 'Room not foundd' });
   }
   const isAlreadyBooked = bookings.some(b =>
     b.roomId === roomId &&
@@ -36,7 +36,7 @@ app.post('/bookings', (req, res) => {
     (endTime > b.startTime && endTime <= b.endTime))
   );
   if (isAlreadyBooked) {
-    return res.status(400).json({ message: 'Room is already booked for the specified time' });
+    return res.status(400).json({ message: 'Rooom is already booked  at the time' });
   }
 
   const bookingId = bookings.length + 1;
@@ -92,7 +92,7 @@ app.get('/customers/:customerName/bookings', (req, res) => {
 });
 
 // Start the server
-const port = process.env.PORT || 7000;
+const port = process.env.PORT || 13000;
 app.listen(port, () => {
   console.log(`Server running on port ${port}`);
 });
